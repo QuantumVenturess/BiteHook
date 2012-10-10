@@ -6,7 +6,11 @@ class SessionsController < ApplicationController
 	# Server side Facebook authentication
 	def auth
 		client_id = app_id
-		redirect_uri = "http://localhost:3000/auth"
+		if Rails.env.production?
+			redirect_uri = "http://bitehook.com/auth"
+		else
+			redirect_uri = "http://localhost:3000/auth"
+		end
 		client_secret = app_secret
 		code = params[:code]
 		exchange = "https://graph.facebook.com/oauth/access_token?client_id=#{client_id}&redirect_uri=#{redirect_uri}&client_secret=#{client_secret}&code=#{code}"
