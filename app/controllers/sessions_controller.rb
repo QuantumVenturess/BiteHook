@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+	require 'httparty'
+
 	before_filter :already_signed_in, except: :destroy
 
 	# Server side Facebook authentication
@@ -10,7 +12,8 @@ class SessionsController < ApplicationController
 		exchange = "https://graph.facebook.com/oauth/access_token?client_id=#{client_id}&redirect_uri=#{redirect_uri}&client_secret=#{client_secret}&code=#{code}"
 		response = HTTParty.get(exchange)
 		if response.to_s[/error/]
-			redirect_to "http://www.google.com/error"
+			flash[:error] = 'Unable to authenticate, please try again.'
+			redirect_to root_path
 		else
 			access_token = response.to_s.split('=')[1].split('&')[0]
 			api_call = HTTParty.get("https://graph.facebook.com/me?access_token=#{access_token}")
@@ -44,7 +47,8 @@ class SessionsController < ApplicationController
 					sign_in @user
 					redirect_to upcoming_path
 				else
-					redirect_to "http://www.google.com/user-didnt-save"
+					flash[:error] = 'Unable to create user, please try again.'
+					redirect_to root_path
 				end
 			end
 		end
