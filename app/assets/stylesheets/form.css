@@ -1,0 +1,106 @@
+.formHeader {
+	font-size: 28px;
+	padding: 20px 0;
+}
+
+.field {
+	margin: 0 0 18px 0;
+}
+
+.field p {
+	font-size: 14px;
+	margin: 0 0 8px 0;
+}
+
+.field input {
+	border: 1px solid rgb(200, 200, 200);
+	color: rgb(60, 60, 60);
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	padding: 10px;
+	margin: 0;
+	width: 400px;
+}
+
+.field input:hover {
+	border: 1px solid rgb(150, 150, 150);
+}
+
+.field input:focus, .field input:active {
+	border: 1px solid rgb(100, 100, 100);
+	outline: none;
+}
+
+.action {
+	padding: 20px 0 0 0;
+	text-align: right;
+}
+
+.action input {
+	background: rgb(207, 4, 4);
+	border: 0px solid rgb(0, 0, 0);
+	color: rgb(245, 245, 245);
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	padding: 10px 20px;
+	margin: 0;
+}
+
+.action input:hover {
+	background: rgb(227, 24, 24);
+	cursor: pointer;
+}
+
+.action input:active {
+	background: rgb(217, 14, 14);
+}
+
+.action a {
+	background: rgb(190, 190, 190);
+	border: 0px solid rgb(0, 0, 0);
+	color: rgb(75, 75, 75);
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	padding: 10px 20px;
+	margin: 0 0 0 10px;
+}
+
+.action a:hover {
+	background: rgb(195, 195, 195);
+}
+
+select {
+	border: 1px solid rgb(200, 200, 200);
+	color: rgb(75, 75, 75);
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	padding: 10px;
+	margin: 0;
+}
+
+textarea {
+	border: 1px solid rgb(200, 200, 200);
+	color: rgb(75, 75, 75);
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	height: 320px;
+	padding: 10px;
+	margin: 0;
+	width: 400px;
+}
+
+textarea:hover {
+	border: 1px solid rgb(150, 150, 150);
+}
+
+textarea:focus, textarea:active {
+	border: 1px solid rgb(100, 100, 100);
+	outline: none;
+}
+
+/* Event from */
+.eventForm {
+	margin: 0 auto;
+	padding: 0 20px;
+	width: 422px;
+}

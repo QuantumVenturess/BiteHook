@@ -1,0 +1,190 @@
+.eventShow {
+	background: rgb(255, 255, 255);
+	float: right;
+	margin: 30px 0 0 0;
+	width: 800px;
+	-webkit-box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.3);
+	-khtml-box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.3);
+	-ms-box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.3);
+	-o-box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.3);
+}
+
+/* Header */
+.eventHeader {
+	border-bottom: 1px dotted rgb(200, 200, 200);
+}
+
+#eventName {
+	font-size: 28px;
+	line-height: 35px;
+	padding: 26px 30px;
+	text-align: right;
+}
+
+.eventPrice {
+	float: left;
+}
+
+.eventHeader p {
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+.eventHeader a {
+	color: rgb(235, 6, 0);
+}
+
+.eventHeader a:hover {
+	color: rgb(255, 26, 0);
+}
+
+/* Event nav */
+.eventNav {
+	border-right: 1px dotted rgb(200, 200, 200);
+	margin: 0 0 0 -180px;
+	padding: 0 10px 0 0;
+	position: absolute;
+	text-align: right;
+	width: 150px;
+}
+
+#eventDay {
+	color: rgb(100, 100, 100);
+	font-size: 20px;
+	padding: 10px 10px 10px 0;
+}
+
+#eventDate {
+	border-top: 1px dotted rgb(200, 200, 200);
+	color: rgb(150, 150, 150);
+	font-size: 14px;
+	padding: 10px 10px 10px 0;
+}
+
+.fixed {
+	position: fixed;
+	top: 45px;
+}
+
+.fixed_50 {
+	position: fixed;
+	top: 50px;
+}
+
+/* Attendance */
+.attend {
+	float: right;
+	margin: 20px 0 0 0;
+}
+
+.attend a {
+	background: rgb(207, 4, 4);
+	color: rgb(245, 245, 245);
+	font-size: 20px;
+	padding: 10px 20px;
+}
+
+.attend a:hover {
+	background: rgb(227, 24, 24);
+	color: rgb(245, 245, 245);
+}
+
+.attend a:active {
+	background: rgb(217, 14, 14);
+}
+
+.paymentSubmit {
+	background: rgb(207, 4, 4);
+	border: none;
+	color: rgb(245, 245, 245);
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 20px;
+	margin: 0;
+	padding: 10px 20px;
+}
+
+.paymentSubmit:hover {
+	background: rgb(227, 24, 24);
+	color: rgb(245, 245, 245);
+	cursor: pointer;
+}
+
+.paymentSubmit:active {
+	background: rgb(217, 14, 14);
+}
+
+#alreadyAttending {
+	background: rgb(227, 24, 24);
+	color: rgb(245, 245, 245);
+	font-size: 20px;
+	padding: 10px 20px;
+}
+
+.attending {
+	float: right;
+	margin: 20px 0 0 0;
+	width: 120px;
+}
+
+.attending p {
+	font-size: 12px;
+	margin: 0 0 5px 0;
+}
+
+.attending img {
+	float: right;
+	max-height: 20px;
+	max-width: 20px;
+	padding: 2px;
+}
+
+/* Image */
+.eventImage {
+	height: 500px;
+	margin: 0 auto 40px auto;
+	text-align: center;
+	width: 500px;
+}
+
+.eventImage .slides_container {
+	height: 500px;
+	width: 500px;
+}
+
+.eventImage img {
+	max-height: 500px;
+}
+
+.eventImage .pagination {
+	display: none;
+}
+
+/* Info */
+.eventInfo .eventInfoHeader p {
+	font-size: 20px;
+}
+
+.eventInfo {
+	padding: 20px 30px;
+}
+
+.eventInfo p {
+	font-size: 14px;
+	line-height: 20px;
+	margin: 0 0 15px 0;
+}
+
+.eventInfo .address p {
+	margin: 0 0 5px 0;
+}
+
+.address {
+	margin: 0 0 15px 0;
+}
+
+/* Comments */
+.eventComments {
+	border-top: 1px dotted rgb(200, 200, 200);
+	padding: 20px 30px;
+}

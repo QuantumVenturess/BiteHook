@@ -1,0 +1,32 @@
+<div class="eventShow">
+	<div class="eventHeader">
+		<p id="eventName">
+			<span class="eventPrice"><%= number_to_currency(event.price) %></span>
+			<%= link_to event.name, event %>
+		</p>
+	</div>
+	<div class="eventInfo">
+		<div class="eventSingleImage">
+			<%= image_tag event.image1 %>
+		</div>
+		<div class="eventInfoHeader">
+			<p>Location</p>
+		</div>
+		<div class="address">
+			<p><%= event.address_1 %></p>
+			<% if event.address_2 %>
+				<p><%= event.address_2 %></p>
+			<% end %>
+			<p><%= event.city %> <%= event.state %>, <%= event.zip_code %></p>
+		</div>
+		<div class="eventInfoHeader">
+			<p>Date</p>
+		</div>
+		<div class="date">
+			<p><%= event.date.strftime("%A") %></p>
+			<p><%= event.date.strftime("%b %d, %Y") %></p>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+<div class="clear"></div>

@@ -1,0 +1,16 @@
+<div class="userShow">
+	<div class="userLeft">
+		<div class="userImage">
+			<%= image_tag @user.image %>
+		</div>
+	</div>
+	<div class="userRight">
+		<div class="userName">
+			<p><%= @user.name %></p>
+		</div>
+		<div class="userEvents">
+			<%= render partial: 'user_event', collection: @events, as: :event %>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>

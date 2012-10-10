@@ -1,0 +1,19 @@
+<div class="eventForm">
+	<p class="formHeader"><%= @title %></p>
+	<%= form_for @user do |f| %>
+		<div class="form">
+			<div class="field">
+				<p>Name</p>
+				<%= f.text_field :name %>
+			</div>
+			<div class="field">
+				<p>Location</p>
+				<%= f.text_field :location %>
+			</div>
+			<div class="action">
+				<%= f.submit 'Submit' %>
+				<%= link_to 'Cancel', events_path %>
+			</div>
+		</div>
+	<% end %>
+</div>

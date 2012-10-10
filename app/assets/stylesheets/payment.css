@@ -1,0 +1,18 @@
+.payments {
+	padding: 20px;
+}
+
+.payments ol {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	margin: 0;
+	padding: 0 0 0 10px;
+}
+
+.payment {
+	margin: 0 0 10px 0;
+}
+
+.payment p {
+	font-size: 12px;
+}

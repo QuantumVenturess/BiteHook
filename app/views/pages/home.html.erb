@@ -1,0 +1,81 @@
+<div class="topIntro">
+	<div class="intro">
+		<div class="introPhrase">
+			<p>Catch a great bite</p>
+			<p>with good people</p>
+		</div>
+		<div class="introInfo">
+			<p>Social dining experiences at exclusive prices</p>
+		</div>
+		<% unless signed_in? %>
+			<%= link_to 'Join Now', facebook_url, class: "introJoin joinNow" %>
+		<% end %>
+	</div>
+	<div id="slides">
+		<div class="slides_container">
+			<div>
+				<%= image_tag "/assets/food/steak.jpg" %>
+			</div>
+			<div>
+				<%= image_tag "/assets/food/burger.jpg" %>
+			</div>
+			<div>
+				<%= image_tag "/assets/food/wine.jpg" %>
+			</div>
+			<div>
+				<%= image_tag "/assets/food/seafood.jpg" %>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="bottomIntro">
+	<div class="howWorks">
+		<p class="howWorksHeader">How It Works</p>
+		<%= link_to '', '#', name: 'works' %>
+		<ul>
+			<li>
+				<div class="howWorksGroup greet">
+					<p class="groupHeader">Greet</p>
+					<div class="groupImage">
+						<%= image_tag '/assets/greet.png' %>
+					</div>
+					<p>Join BiteHook and reserve your dining experience at an exclusive price.</p>
+				</div>
+			</li>
+			<li class="groupArrow">
+				<div>
+					<div></div>
+				</div>
+			</li>
+			<li>
+				<div class="howWorksGroup eat">
+					<p class="groupHeader">Eat</p>
+					<div class="groupImage">
+						<%= image_tag '/assets/eat.png' %>
+					</div>
+					<p>Arrive at the event and feast on specially prepared meals.</p>
+				</div>
+			</li>
+			<li class="groupArrow">
+				<div>
+					<div></div>
+				</div>
+			</li>
+			<li>
+				<div class="howWorksGroup meet">
+					<p class="groupHeader">Meet</p>
+					<div class="groupImage">
+						<%= image_tag '/assets/meet.png' %>
+					</div>
+					<p>Meet new people or bring a friend, either way you will never eat alone!</p>
+				</div>
+			</li>
+		</ul>
+		<% unless signed_in? %>
+			<div class="howWorksArrow"></div>
+			<div class="howWorksJoin">
+				<%= link_to 'Join Now', facebook_url, class: "joinNow" %>
+			</div>
+		<% end %>
+	</div>
+</div>

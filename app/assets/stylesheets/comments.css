@@ -1,0 +1,104 @@
+/* Comment form */
+.commentForm {
+	background: rgb(235, 235, 235);
+	padding: 10px;
+}
+
+.commentImage {
+	float: left;
+	text-align: center;
+	width: 50px;
+}
+
+.commentImage img {
+	max-height: 50px;
+	max-width: 50px;
+}
+
+.commentForm .field {
+	float: right;
+	margin: 0 0 10px 0;
+	width: 660px;
+}
+
+.commentForm .field textarea {
+	font-size: 13px;
+	height: 28px;
+	overflow: hidden;
+	resize: none;
+	width: 638px;
+}
+
+.commentForm .action {
+	float: right;
+	padding: 0;
+	width: 660px;
+}
+
+.commentForm .action input {
+	font-size: 13px;
+	padding: 5px 10px;
+}
+
+.postFacebook {
+	float: left;
+	height: 13px;
+}
+
+.postFacebook label {
+	cursor: pointer;
+}
+
+.action .postFacebook input {
+	float: left;
+	margin: 0 5px 0 0;
+}
+
+.postFacebook p {
+	float: left;
+	font-size: 11px;
+	height: 13px;
+}
+
+/* Comment partial */
+.comment {
+	border-bottom: 1px dotted rgb(200, 200, 200);
+	padding: 10px;
+}
+
+.commentName {
+	margin: 0 0 5px 0;
+}
+
+.commentName, .commentContent {
+	float: right;
+	width: 660px;
+}
+
+.commentName a {
+	font-size: 13px;
+}
+
+.commentName a:hover {
+	color: rgb(227, 24, 24);
+}
+
+.commentDelete {
+	display: none;
+	float: right;
+}
+
+.commentContent p {
+	font-size: 13px;
+	margin: 0 0 5px 0;
+}
+
+.commentTime {
+	float: right;
+	width: 660px;
+}
+
+.commentTime p {
+	color: rgb(150, 150, 150);
+	font-size: 12px;
+}

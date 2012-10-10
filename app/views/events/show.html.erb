@@ -1,0 +1,91 @@
+<%= content_for :head do %>
+	<meta property="og:title" content="<%= @event.name %>"/>
+	<meta property="og:image" content="<%= @event.image1 %>"/>
+	<meta property="og:site_name" content="BiteHook"/>
+<% end %>
+<div class="eventShow">
+	<span class="eventWaypoint1"></span>
+	<div class="eventHeader">
+		<div class="eventNav">
+			<p id="eventDay"><%= @event.date.strftime("%A") %></p>
+			<p id="eventDate"><%= @event.date.strftime("%b %d, %Y") %></p>
+			<div class="clear"></div>
+			<div class="attend">
+				<% if signed_in? %>
+					<% if current_user.attending?(@event) %>
+						<% if @event.date > Time.now %>
+							<p id="alreadyAttending">Attending</p>
+						<% else %>
+							<p id="alreadyAttending">Attended</p>
+						<% end %>
+					<% else %>
+						<%= render partial: 'payments/form', locals: { object: @event } %>
+					<% end %>
+				<% else %>
+					<%= link_to 'Attend', facebook_url %>
+				<% end %>
+			</div>
+			<div class="attending">
+				<% if @attending.empty? %>
+					<p>Be the first to attend</p>
+				<% else %>
+					<p>People Attending</p>
+				<% end %>
+				<% @attending.each do |user| %>
+					<%= link_to image_tag(user.image), user, title: user.first_name %>
+				<% end %>
+			</div>
+		</div>
+		<span class="eventWaypoint2"></span>
+		<p id="eventName">
+			<span class="eventPrice"><%= number_to_currency(@event.price) %></span>
+			<%= link_to @event.name, @event %>
+		</p>
+	</div>
+	<div class="eventInfo">
+		<div id="slides" class="eventImage">
+			<div class="slides_container">
+				<% if @event.image1 %>
+					<div>
+						<%= image_tag @event.image1 %>
+					</div>
+				<% end %>
+				<% if @event.image2 %>
+					<div>
+						<%= image_tag @event.image2 %>
+					</div>
+				<% end %>
+				<% if @event.image3 %>
+					<div>
+						<%= image_tag @event.image3 %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+		<div class="eventInfoHeader">
+			<p>Information</p>
+		</div>
+		<%= to_html(@event.info.html_safe) %>
+		<div class="eventInfoHeader">
+			<p>Location</p>
+		</div>
+		<div class="address">
+			<p><%= @event.address_1 %></p>
+			<% if @event.address_2 %>
+				<p><%= @event.address_2 %></p>
+			<% end %>
+			<p><%= @event.city %> <%= @event.state %>, <%= @event.zip_code %></p>
+		</div>
+	</div>
+	<div class="eventComments">
+		<% if signed_in? %>
+			<div class="commentForm">
+				<%= render 'comments/form' %>
+			</div>
+		<% end %>
+		<div class="commentList">
+			<%= render @comments %>
+		</div>
+	</div>
+</div>
+<div class="clear"></div>

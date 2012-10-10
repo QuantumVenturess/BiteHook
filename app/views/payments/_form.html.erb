@@ -1,0 +1,8 @@
+<%= payment_form do %>
+	<%= hidden_field_tag 'abandonUrl', "#{request.url.split(request.fullpath)[0]}#{event_path(object)}" %>
+	<%= hidden_field_tag 'amount', "USD #{object.price}" %>
+	<%= hidden_field_tag 'description', "#{object.name}" %>
+	<%= hidden_field_tag 'referenceId', "BiteHook Event #{object.id}" %>
+	<%= hidden_field_tag 'returnUrl', "#{request.url.split(request.fullpath)[0]}/confirm_payment/#{object.id}" %>
+	<%= submit_tag 'Attend', name: nil, class: 'paymentSubmit' %>
+<% end %>

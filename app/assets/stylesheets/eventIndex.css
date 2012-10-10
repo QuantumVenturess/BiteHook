@@ -1,0 +1,93 @@
+/* Index */
+.events {
+	padding: 10px;
+}
+
+.events ol {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	margin: 20px 0 0 0;
+	padding: 0 0 0 40px;
+}
+
+.indexEvent {
+	margin: 0 0 10px 0;
+	padding: 5px;
+}
+
+.indexEvent p:first-child {
+	font-size: 18px;
+	margin: 0 0 5px 0;
+}
+
+.indexEvent p:last-child {
+	font-size: 12px;
+}
+
+/* Event partial */
+.eventSingleImage {
+	float: right;
+	height: 200px;
+}
+
+.eventSingleImage img {
+	max-height: 200px;
+}
+
+.eventSingleAttend {
+	float: left;
+	position: relative;
+	top: 30px;
+}
+
+.eventSingleAttend a {
+	background: rgb(207, 4, 4);
+	color: rgb(245, 245, 245);
+	font-size: 20px;
+	padding: 10px 20px;
+}
+
+.eventSingleAttend a:hover {
+	color: rgb(245, 245, 245);
+	background: rgb(227, 24, 24);
+}
+
+/* Share */
+.socialShare {
+	float: right;
+	list-style-type: none;
+	margin: 0 0 20px 0;
+	padding: 0;
+	position: relative;
+	top: 10px;
+	width: 96px;
+}
+
+.eventShareTwitter {
+	float: right;
+	font-size: 0;
+	height: 20px;
+	margin-bottom: 10px;
+	width: 59px;
+}
+
+.eventShareTwitter div {
+	background: url("/assets/tweet.jpg");
+	width: 59px;
+	height: 20px;
+}
+
+.eventShareTwitter div:hover {
+	background-position: -59px 0;
+}
+
+.eventShareTwitter div:active {
+	background-position: -118px 0;
+}
+
+.eventShareFacebook {
+	float: right;
+	height: 20px;
+	overflow: hidden;
+	width: 44px;
+}

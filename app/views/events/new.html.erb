@@ -1,0 +1,59 @@
+<div class="eventForm">
+	<p class="formHeader"><%= @title %></p>
+	<%= form_for @event do |f| %>
+		<div class="form">
+			<div class="field">
+				<p>Name</p>
+				<%= f.text_field :name %>
+			</div>
+			<div class="field">
+				<p>Price</p>
+				<%= f.text_field :price %>
+			</div>
+			<div class="field">
+				<p>Date</p>
+				<%= f.datetime_select :date, ampm: true, datetime_separator: "", use_short_month: true, order: [:month, :day, :year] %>
+			</div>
+			<div class="field">
+				<p>Address 1</p>
+				<%= f.text_field :address_1 %>
+			</div>
+			<div class="field">
+				<p>Address 2</p>
+				<%= f.text_field :address_2 %>
+			</div>
+			<div class="field">
+				<p>City</p>
+				<%= f.text_field :city %>
+			</div>
+			<div class="field">
+				<p>State</p>
+				<%= f.text_field :state %>
+			</div>
+			<div class="field">
+				<p>Zip Code</p>
+				<%= f.text_field :zip_code %>
+			</div>
+			<div class="field">
+				<p>Image 1</p>
+				<%= f.text_field :image1 %>
+			</div>
+			<div class="field">
+				<p>Image 2</p>
+				<%= f.text_field :image2 %>
+			</div>
+			<div class="field">
+				<p>Image 3</p>
+				<%= f.text_field :image3 %>
+			</div>
+			<div class="field">
+				<p>Info</p>
+				<%= f.text_area :info %>
+			</div>
+			<div class="action">
+				<%= f.submit 'Submit' %>
+				<%= link_to 'Cancel', events_path %>
+			</div>
+		</div>
+	<% end %>
+</div>

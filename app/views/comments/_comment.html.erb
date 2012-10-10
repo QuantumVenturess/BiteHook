@@ -1,0 +1,18 @@
+<div id="comment_<%= comment.id %>" class="comment <%= 'myComment' if comment.user == current_user %>">
+	<div class="commentImage">
+		<%= link_to image_tag(comment.user.image), comment.user %>
+	</div>
+	<div class="commentName">
+		<% if comment.user == current_user %>
+			<%= link_to image_tag('/assets/delete.png'), comment, class: 'commentDelete', title: 'Delete', method: :delete, remote: true %>
+		<% end %>
+		<p><%= link_to comment.user.name, comment.user %></p>
+	</div>
+	<div class="commentContent">
+		<%= auto_link((to_html(strip_tags(comment.content))), :all, :target => "_blank") %>
+	</div>
+	<div class="commentTime">
+		<p><%= comment.created_at.strftime("%b %d, %y at %I:%M %P") %></p>
+	</div>
+	<div class="clear"></div>
+</div>

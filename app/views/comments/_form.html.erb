@@ -1,0 +1,22 @@
+<div class="commentImage">
+	<%= image_tag current_user.image %>
+</div>
+<%= form_for current_user.comments.build, remote: true do |f| %>
+	<%= f.hidden_field :event_id, value: @event.id %>
+	<div class="field">
+		<%= f.text_area :content %>
+	</div>
+	<div class="action">
+		<div class="postFacebook">
+			<label>
+				<input type="checkbox" name="post_facebook" value="1" checked>
+				<p>Post to Facebook</p>
+			</label>
+		</div>
+		<%= f.submit 'Comment' %>
+	</div>
+<% end %>
+<div class="clear"></div>
+<script>
+$('.commentForm textarea').autoResize();
+</script>

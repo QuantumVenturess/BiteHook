@@ -1,0 +1,15 @@
+<div class="payments">
+	<ol>
+		<% @payments.each do |payment| %>
+			<li>
+				<div class="payment">
+					<p><%= payment.created_at.strftime("%b %d, %y at %I:%M %P") %></p>
+					<p><%= link_to payment.user.name, payment.user %> | <%= link_to payment.event.name, payment.event if payment.event %></p>
+					<p>Description: <%= payment.description %></p>
+					<p>Amount: <%= number_to_currency(payment.amount) %></p>
+					<p>Transaction ID: <%= payment.transaction_id %></p>
+				</div>
+			</li>
+		<% end %>
+	</ol>
+</div>

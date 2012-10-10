@@ -1,0 +1,41 @@
+.userShow {
+	margin: 20px 0 0 0;
+}
+
+.userLeft {
+	float: left;
+	margin: 0 20px 0 0;
+	width: 180px;
+}
+
+.userImage {
+	height: 200px;
+	text-align: center;
+	width: 180px;
+}
+
+.userImage img {
+	max-height: 180px;
+	max-width: 180px;
+}
+
+.userRight {
+	float: left;
+	width: 800px;
+}
+
+.userName {
+	float: left;
+	padding: 0 0 20px 0;
+}
+
+.userName {
+	font-size: 36px;
+	text-align: center;
+	width: 800px;
+}
+
+/* Events */
+.eventInfo .date p {
+	margin: 0 0 5px 0;
+}

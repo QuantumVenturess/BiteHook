@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= title %></title>
+	<%= stylesheet_link_tag    "application" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
+	<%= favicon_link_tag 'favicon.ico' %>
+	<meta charset="UTF-8">
+	<%= yield :head %>
+	<script type="text/javascript">
+		// Facebook
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+
+		// Twitter
+		!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+	</script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<%= render 'layouts/header' %>
+		</div>
+		<div class="content">
+			<% flash.each do |key, value| %>
+				<div class="flash <%= key %>">
+					<%= link_to image_tag('/assets/close.png'), '#', class: 'closeFlash', title: "Close" %>
+					<p><%= value %></p>
+				</div>
+			<% end %>
+			<%= yield %>
+		</div>
+	</div>
+	<div class="footer">
+		<%= render 'layouts/footer' %>
+	</div>
+</body>
+</html>

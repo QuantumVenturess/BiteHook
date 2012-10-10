@@ -1,0 +1,2 @@
+$('.commentForm').html("<%= escape_javascript(render('form')) %>")
+$('.commentList').prepend("<%= escape_javascript(render(partial: 'comment', object: @comment, locals: { comment: @comment })) %>")

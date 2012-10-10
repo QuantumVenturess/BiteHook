@@ -1,0 +1,51 @@
+<div class="eventShow">
+	<div class="eventHeader">
+		<div class="eventNav">
+			<p id="eventDay"><%= event.date.strftime("%A") %></p>
+			<p id="eventDate"><%= event.date.strftime("%b %d, %Y") %></p>
+			<ul class="socialShare">
+				<li class="eventShareTwitter">
+					<%= link_to("http://bitehook.com#{event_path(event)}", id: "tweet_#{event.id}", class: "twitterShare", name: "#{CGI.escape(event.name)}", title: "Twitter") do %>
+						<div></div>
+					<% end %>
+				</li>
+				<li class="eventShareFacebook">
+					<fb:like href="http://bitehook.com<%= event_path(event) %>" layout="button_count" send="false" show_faces="false">
+				</li>
+			</ul>
+			<div class="clear"></div>
+		</div>
+		<p id="eventName">
+			<span class="eventPrice"><%= number_to_currency(event.price) %></span>
+			<%= link_to event.name, event %>
+		</p>
+	</div>
+	<div class="eventInfo">
+		<div class="eventSingleImage">
+			<%= image_tag event.image1 %>
+		</div>
+		<div class="eventInfoHeader">
+			<p>Location</p>
+		</div>
+		<div class="address">
+			<p><%= event.address_1 %></p>
+			<% if event.address_2 %>
+				<p><%= event.address_2 %></p>
+			<% end %>
+			<p><%= event.city %> <%= event.state %>, <%= event.zip_code %></p>
+		</div>
+		<div class="eventSingleAttend">
+			<% if current_user.attending?(event) %>
+				<% if event.date > Time.now %>
+					<p id="alreadyAttending">Attending</p>
+				<% else %>
+					<p id="alreadyAttending">Attended</p>
+				<% end %>
+			<% else %>
+				<%= render partial: 'payments/form', locals: { object: event } %>
+			<% end %>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+<div class="clear"></div>

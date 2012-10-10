@@ -1,0 +1,42 @@
+<div class="inHeader">
+	<%= link_to root_path do %>
+		<%= image_tag "/assets/logo.png", class: "logo" %>
+	<% end %>
+	<% if signed_in? %>
+		<div class="rightNav">
+			<div class="accountMenu">
+				<ul>
+					<% if current_user.admin? %>
+						<li><%= link_to 'New Event', new_event_path %></li>
+						<li><%= link_to 'Events', events_path %></li>
+					<% end %>
+					<li><%= link_to 'My Bites', current_user %></li>
+					<li><%= link_to 'Settings', edit_user_path(current_user) %></li>
+					<li><%= link_to 'Sign Out', sign_out_path %></li>
+				</ul>
+			</div>
+		</div>
+	<% end %>
+	<div class="rightNav">
+		<ul class="headerNav">
+			<li>
+				<% if signed_in? %>
+					<%= link_to 'Upcoming Events', upcoming_path %>
+				<% else %>
+					<% if request.fullpath == '/' %>
+						<%= link_to 'How It Works', '#works' %>
+					<% else %>
+						<%= link_to 'How It Works', '/#works' %>
+					<% end %>
+				<% end %>
+			</li>
+			<li>
+				<% if signed_in? %>
+					<%= link_to "#{current_user.first_name}", current_user, class: 'account' %>
+				<% else %>
+					<%= link_to 'Sign In', facebook_url %>
+				<% end %>
+			</li>
+		</ul>
+	</div>
+</div>
