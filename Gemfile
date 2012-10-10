@@ -8,6 +8,13 @@ gem 'json'
 gem 'friendly_id'
 gem 'shortly'
 gem 'rails_autolink'
+gem 'dalli'
+
+group :production do
+	gem 'pg'
+	gem 'thin'
+	gem 'newrelic_rpm'
+end
 
 group :development do
 	gem 'sqlite3'
