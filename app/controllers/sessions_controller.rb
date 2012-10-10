@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 		if response.to_s[/error/]
 			redirect_to root_path
 		else
-			access_token = response.to_s.split('=')[1].split('&')[0]
+			access_token = response.to_s.split('code=')[1]
 			api_call = HTTParty.get("https://graph.facebook.com/me?access_token=#{access_token}")
 			results = JSON.parse(api_call.to_json)
 			facebook_id = results['id']
