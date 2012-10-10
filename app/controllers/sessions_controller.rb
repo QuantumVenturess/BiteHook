@@ -1,6 +1,4 @@
 class SessionsController < ApplicationController
-	require 'httparty'
-
 	before_filter :already_signed_in, except: :destroy
 
 	# Server side Facebook authentication
