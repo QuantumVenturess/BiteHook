@@ -1,5 +1,15 @@
 class User < ActiveRecord::Base
-	attr_accessible :name, :location
+	attr_accessible :name,
+					:access_token,
+					:first_name,
+					:email,
+					:facebook_id,
+					:image,
+					:in_count,
+					:last_in,
+					:last_name,
+					:location,
+					:slug
 
 	has_many :events, through: :attendances
 	has_many :attendances, dependent: :destroy
