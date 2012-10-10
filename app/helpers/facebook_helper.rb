@@ -16,7 +16,7 @@ module FacebookHelper
 	def facebook_url
 		client_id = app_id
 		if Rails.env.production?
-			redirect_uri = "http://bitehook.com"
+			redirect_uri = "http://bitehook.com/auth"
 		else
 			redirect_uri = "http://localhost:3000/auth"
 		end
