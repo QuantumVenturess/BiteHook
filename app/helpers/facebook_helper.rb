@@ -15,7 +15,11 @@ module FacebookHelper
 
 	def facebook_url
 		client_id = app_id
-		redirect_uri = "http://localhost:3000/auth"
+		if Rails.env.production?
+			redirect_uri = "http://bitehook.com"
+		else
+			redirect_uri = "http://localhost:3000/auth"
+		end
 		scope = facebook_scope
 		response_type = "token"
 		state = 10.times.map { rand(10) }.join('')
