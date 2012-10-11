@@ -35,5 +35,6 @@ class PagesController < ApplicationController
 		@title = @event.name
 		@attending = @event.users
 		@comments = @event.comments
+		render layout: false
 	end
 end
