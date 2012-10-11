@@ -1,27 +1,12 @@
-<form action="https://authorize.payments.amazon.com/pba/paypipeline" method="post">
-	<input type="hidden" name="abandonUrl" value="http://localhost:3000/abandon">
-	<input type="hidden" name="accessKey" value="11SEM03K88SD016FS1G2" >
-	<input type="hidden" name="amazonPaymentsAccountId" value="DKZZKGIRREWH715T2GK6XKIEV3EQVBRHE5N3DQ" >
-	<input type="hidden" name="amount" value="USD 1" >
-	<input type="hidden" name="cobrandingStyle" value="logo" >
-	<input type="hidden" name="collectShippingAddress" value="0" >
-	<input type="hidden" name="description" value="Event" >
-	<input type="hidden" name="immediateReturn" value="1" >
-	<input type="hidden" name="isDonationWidget" value="0" >
-	<input type="hidden" name="processImmediate" value="1" >
-	<input type="hidden" name="referenceId" value="http://bitehook.com" >
-	<input type="hidden" name="returnUrl" value="http://localhost:3000/confirm_payment" >
-	<input type="image" src="http://g-ecx.images-amazon.com/images/G/01/asp/beige_medium_paynow_withlogo_whitebg.gif" border="0">
-</form>
-<h1>Listing payments</h1>
-<% @payments.each do |payment| %>
-	<p><%= number_to_currency(payment.amount) %></p>
-	<p><%= payment.transaction_id %></p>
-<% end %>
-
-<%= payment_form do %>
-	<%= hidden_field_tag 'amount', 'USD 1' %>
-	<%= hidden_field_tag 'description', 'Event' %>
-	<%= hidden_field_tag 'referenceId', 'BiteHook' %>
-	<%= submit_tag 'Attend', name: nil %>
-<% end %>
+<!DOCTYPE html>
+<html>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# bitehook_offline: http://ogp.me/ns/fb/bitehook_offline#">
+	<meta property="fb:app_id" content="154291521379396" />
+	<meta property="og:type"   content="bitehook_offline:event" />
+	<meta property="og:title" content="<%= @event.name %>" />
+	<meta property="og:image" content="<%= @event.image1 %>" />
+	<meta property="og:description" content="<%= @event.info %>" />
+	<meta property="og:url"    content="http://bitehook.com/test" />
+	<meta property="og:site_name" content="BiteHook" />
+</head>
+</html>

@@ -16,6 +16,6 @@ class PagesController < ApplicationController
 
 	def test
 		@title = 'Test'
-		@payments = Payment.all
+		@event = Event.first
 	end
 end
