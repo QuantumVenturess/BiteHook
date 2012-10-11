@@ -11,7 +11,7 @@ Bitehook::Application.routes.draw do
 	# Pages
 	root to: 'pages#home'
 	match 'about' => 'pages#about', as: 'about'
-	match 'test' => 'pages#test', as: 'test'
+	match 'test/test' => 'pages#test', as: 'test'
 
 	# Payments
 	match 'confirm_payment/:event_id' => 'payments#confirm_payment', as: 'confirm_payment'
