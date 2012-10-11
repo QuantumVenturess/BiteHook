@@ -4,7 +4,7 @@
 <%= form_for current_user.comments.build, remote: true do |f| %>
 	<%= f.hidden_field :event_id, value: @event.id %>
 	<div class="field">
-		<%= f.text_area :content %>
+		<%= f.text_area :content, tabindex: 1 %>
 	</div>
 	<div class="action">
 		<div class="postFacebook">
@@ -13,7 +13,7 @@
 				<p>Post to Facebook</p>
 			</label>
 		</div>
-		<%= f.submit 'Comment' %>
+		<%= f.submit 'Comment', tabindex: 2 %>
 	</div>
 <% end %>
 <div class="clear"></div>

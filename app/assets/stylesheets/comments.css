@@ -40,6 +40,11 @@
 	padding: 5px 10px;
 }
 
+.commentForm .action input:focus {
+	background: rgb(217, 14, 14);
+	outline: none;
+}
+
 .postFacebook {
 	float: left;
 	height: 13px;
