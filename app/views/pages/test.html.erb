@@ -1,27 +1,95 @@
-<form action="https://authorize.payments.amazon.com/pba/paypipeline" method="post">
-	<input type="hidden" name="abandonUrl" value="http://localhost:3000/abandon">
-	<input type="hidden" name="accessKey" value="11SEM03K88SD016FS1G2" >
-	<input type="hidden" name="amazonPaymentsAccountId" value="DKZZKGIRREWH715T2GK6XKIEV3EQVBRHE5N3DQ" >
-	<input type="hidden" name="amount" value="USD 1" >
-	<input type="hidden" name="cobrandingStyle" value="logo" >
-	<input type="hidden" name="collectShippingAddress" value="0" >
-	<input type="hidden" name="description" value="Event" >
-	<input type="hidden" name="immediateReturn" value="1" >
-	<input type="hidden" name="isDonationWidget" value="0" >
-	<input type="hidden" name="processImmediate" value="1" >
-	<input type="hidden" name="referenceId" value="http://bitehook.com" >
-	<input type="hidden" name="returnUrl" value="http://localhost:3000/confirm_payment" >
-	<input type="image" src="http://g-ecx.images-amazon.com/images/G/01/asp/beige_medium_paynow_withlogo_whitebg.gif" border="0">
-</form>
-<h1>Listing payments</h1>
-<% @payments.each do |payment| %>
-	<p><%= number_to_currency(payment.amount) %></p>
-	<p><%= payment.transaction_id %></p>
+<%= content_for :head do %>
+	<meta property="fb:app_id" content="160257407449032" /> 
+	<meta property="og:type"   content="bitehook:event" /> 
+	<meta property="og:title"  content="<%= @event.name %>" />
+	<meta property="og:image"  content="<%= @event.image1 %>" />
+	<meta property="og:description" content="<%= @event.info %>" />
+	<meta property="og:url"    content="http://bitehook.com<%= event_path(@event) %>" />
+	<meta property="og:site_name" content="BiteHook"/>
 <% end %>
-
-<%= payment_form do %>
-	<%= hidden_field_tag 'amount', 'USD 1' %>
-	<%= hidden_field_tag 'description', 'Event' %>
-	<%= hidden_field_tag 'referenceId', 'BiteHook' %>
-	<%= submit_tag 'Attend', name: nil %>
-<% end %>
+<div class="topButton">
+	<%= link_to('#', class: 'toTop') do %>
+		<div></div>
+	<% end %>
+</div>
+<div class="eventShow">
+	<span class="eventWaypoint1"></span>
+	<div class="eventHeader">
+		<div class="eventNav">
+			<p id="eventDay"><%= @event.date.strftime("%A") %></p>
+			<p id="eventDate"><%= @event.date.strftime("%b %d, %Y") %></p>
+			<div class="clear"></div>
+			<div class="attend">
+				<% if signed_in? %>
+					<% if current_user.attending?(@event) %>
+						<% if @event.date > Time.now %>
+							<p id="alreadyAttending">Attending</p>
+						<% else %>
+							<p id="alreadyAttending">Attended</p>
+						<% end %>
+					<% else %>
+						<%= render partial: 'payments/form', locals: { object: @event } %>
+					<% end %>
+				<% else %>
+					<%= link_to 'Attend', facebook_url %>
+				<% end %>
+			</div>
+			<div class="attending">
+				<% if @attending.empty? %>
+					<p>Be the first to attend</p>
+				<% else %>
+					<p>People Attending</p>
+				<% end %>
+				<% @attending.each do |user| %>
+					<%= link_to image_tag(user.image), user, title: user.first_name %>
+				<% end %>
+			</div>
+		</div>
+		<span class="eventWaypoint2"></span>
+		<p id="eventName">
+			<span class="eventPrice"><%= number_to_currency(@event.price) %></span>
+			<%= link_to @event.name, @event %>
+		</p>
+	</div>
+	<div class="eventInfo">
+		<div class="eventImage">
+			<div id="cycle" class="eventImageContainer">
+				<% if @event.image1 %>
+					<%= image_tag @event.image1 %>
+				<% end %>
+				<% if @event.image2 %>
+					<%= image_tag @event.image2 %>
+				<% end %>
+				<% if @event.image3 %>
+					<%= image_tag @event.image3 %>
+				<% end %>
+			</div>
+		</div>
+		<div class="eventInfoHeader">
+			<p>Information</p>
+		</div>
+		<%= to_html(@event.info.html_safe) %>
+		<div class="eventInfoHeader">
+			<p>Location</p>
+		</div>
+		<div class="address">
+			<p><%= @event.address_1 %></p>
+			<% if @event.address_2 %>
+				<p><%= @event.address_2 %></p>
+			<% end %>
+			<p><%= @event.city %> <%= @event.state %>, <%= @event.zip_code %></p>
+			<p>at <%= @event.date.strftime("%l:%M %p") %></p>
+		</div>
+	</div>
+	<div class="eventComments">
+		<% if signed_in? %>
+			<div class="commentForm">
+				<%= render 'comments/form' %>
+			</div>
+		<% end %>
+		<div class="commentList">
+			<%= render @comments %>
+		</div>
+	</div>
+</div>
+<div class="clear"></div>

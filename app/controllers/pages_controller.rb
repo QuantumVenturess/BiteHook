@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+	before_filter :authenticate, only: :test
+	before_filter :admin_user, only: :test
 
 	def home
 		@title = "BiteHook"
@@ -15,7 +17,9 @@ class PagesController < ApplicationController
 	end
 
 	def test
-		@title = 'Test'
-		@payments = Payment.all
+		@event = Event.where('date < ?', Time.now)[0]
+		@title = @event.name
+		@attending = @event.users
+		@comments = @event.comments
 	end
 end

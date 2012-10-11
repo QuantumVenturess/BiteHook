@@ -1,6 +1,10 @@
 <%= content_for :head do %>
-	<meta property="og:title" content="<%= @event.name %>"/>
-	<meta property="og:image" content="<%= @event.image1 %>"/>
+	<meta property="fb:app_id" content="160257407449032" /> 
+	<meta property="og:type"   content="bitehook:event" /> 
+	<meta property="og:title"  content="<%= @event.name %>" />
+	<meta property="og:image"  content="<%= @event.image1 %>" />
+	<meta property="og:description" content="<%= @event.info %>" />
+	<meta property="og:url"    content="http://bitehook.com<%= event_path(@event) %>" />
 	<meta property="og:site_name" content="BiteHook"/>
 <% end %>
 <div class="topButton">
