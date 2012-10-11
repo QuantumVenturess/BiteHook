@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
-	before_filter :authenticate, except: :show
-	before_filter :admin_user, except: [:upcoming, :show]
+	before_filter :authenticate, except: [:show, :permalink]
+	before_filter :admin_user, except: [:upcoming, :show, :permalink]
 	
 	def upcoming
 		@title = 'Upcoming Events'
@@ -21,6 +21,11 @@ class EventsController < ApplicationController
 		store_location
 	rescue ActiveRecord::RecordNotFound
 		redirect_to upcoming_path
+	end
+
+	def permalink
+		@event = Event.find(params[:id])
+		redirect_to @event
 	end
 
 	def new

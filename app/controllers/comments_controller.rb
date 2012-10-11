@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
 					if Rails.env.production?
 						action = me.og_action!(
 							'bitehook:comment',
-							event: "http://bitehook.com#{event_path(comment.event)}"
+							event: "http://bitehook.com#{event_path(comment.event)}/permalink"
 						)
 					end
 				end
