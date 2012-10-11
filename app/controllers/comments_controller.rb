@@ -15,18 +15,25 @@ class CommentsController < ApplicationController
 				}
 			end
 			if params[:post_facebook] == '1'
-				api_call = HTTParty.get("https://graph.facebook.com/me/permissions?access_token=#{current_user.access_token}")
-				results = JSON.parse(api_call.to_json)
-				if results['data'][0]['publish_stream'] == 1
+				if Rails.env.production?
+					app = FbGraph::Application.new(app_id)
 					me = FbGraph::User.me(current_user.access_token)
-					me.feed!(
-						message: comment.content,
-						picture: comment.event.image1,
-						link: "http://bitehook.com#{event_path(comment.event)}",
-						name: comment.event.name,
-						description: comment.event.info
+					action = me.og_action!(
+						'bitehook:comment',
+						event: event_path(comment.event)
 					)
 				end
+#				api_call = HTTParty.get("https://graph.facebook.com/me/permissions?access_token=#{current_user.access_token}")
+#				results = JSON.parse(api_call.to_json)
+#				if results['data'][0]['publish_stream'] == 1
+#					me = FbGraph::User.me(current_user.access_token)
+#					me.feed!(
+#						message: comment.content,
+#						picture: comment.event.image1,
+#						link: "http://bitehook.com#{event_path(comment.event)}",
+#						name: comment.event.name,
+#						description: comment.event.info
+#					)
 			end
 		else
 			flash[:error] = 'Comment was not created'
