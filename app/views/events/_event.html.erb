@@ -33,6 +33,7 @@
 				<p><%= event.address_2 %></p>
 			<% end %>
 			<p><%= event.city %> <%= event.state %>, <%= event.zip_code %></p>
+			<p>at <%= event.date.strftime("%l:%M %p") %></p>
 		</div>
 		<div class="eventSingleAttend">
 			<% if current_user.attending?(event) %>

@@ -19,4 +19,7 @@ Bitehook::Application.routes.draw do
 	# Sessions
 	match 'auth' => 'sessions#auth', as: 'auth'
 	match 'sign-out' => 'sessions#destroy', as: 'sign_out'
+
+	# 404
+	match '*url' => 'pages#not_found', as: 'not_found'
 end

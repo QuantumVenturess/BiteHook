@@ -1,3 +1,8 @@
+<%= content_for :head do %>
+	<meta property="og:title" content="Catch a great bite with good people."/>
+	<meta property="og:image" content="/assets/bitehook.png"/>
+	<meta property="og:site_name" content="BiteHook"/>
+<% end %>
 <div class="topIntro">
 	<div class="intro">
 		<div class="introPhrase">
@@ -11,20 +16,12 @@
 			<%= link_to 'Join Now', facebook_url, class: "introJoin joinNow" %>
 		<% end %>
 	</div>
-	<div id="slides">
-		<div class="slides_container">
-			<div>
-				<%= image_tag "/assets/food/steak.jpg" %>
-			</div>
-			<div>
-				<%= image_tag "/assets/food/burger.jpg" %>
-			</div>
-			<div>
-				<%= image_tag "/assets/food/wine.jpg" %>
-			</div>
-			<div>
-				<%= image_tag "/assets/food/seafood.jpg" %>
-			</div>
+	<div class="homeImage">
+		<div id="cycle" class="homeImageContainer">
+			<%= image_tag "/assets/food/steak.jpg" %>
+			<%= image_tag "/assets/food/burger.jpg" %>
+			<%= image_tag "/assets/food/wine.jpg" %>
+			<%= image_tag "/assets/food/seafood.jpg" %>
 		</div>
 	</div>
 </div>

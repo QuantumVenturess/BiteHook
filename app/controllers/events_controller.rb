@@ -18,6 +18,7 @@ class EventsController < ApplicationController
 		@title = @event.name
 		@attending = @event.users
 		@comments = @event.comments
+		store_location
 	rescue ActiveRecord::RecordNotFound
 		redirect_to upcoming_path
 	end

@@ -25,6 +25,7 @@
 		<div class="date">
 			<p><%= event.date.strftime("%A") %></p>
 			<p><%= event.date.strftime("%b %d, %Y") %></p>
+			<p>at <%= event.date.strftime("%l:%M %p") %></p>
 		</div>
 		<div class="clear"></div>
 	</div>

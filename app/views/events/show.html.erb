@@ -3,6 +3,11 @@
 	<meta property="og:image" content="<%= @event.image1 %>"/>
 	<meta property="og:site_name" content="BiteHook"/>
 <% end %>
+<div class="topButton">
+	<%= link_to('#', class: 'toTop') do %>
+		<div></div>
+	<% end %>
+</div>
 <div class="eventShow">
 	<span class="eventWaypoint1"></span>
 	<div class="eventHeader">
@@ -43,22 +48,16 @@
 		</p>
 	</div>
 	<div class="eventInfo">
-		<div id="slides" class="eventImage">
-			<div class="slides_container">
+		<div class="eventImage">
+			<div id="cycle" class="eventImageContainer">
 				<% if @event.image1 %>
-					<div>
-						<%= image_tag @event.image1 %>
-					</div>
+					<%= image_tag @event.image1 %>
 				<% end %>
 				<% if @event.image2 %>
-					<div>
-						<%= image_tag @event.image2 %>
-					</div>
+					<%= image_tag @event.image2 %>
 				<% end %>
 				<% if @event.image3 %>
-					<div>
-						<%= image_tag @event.image3 %>
-					</div>
+					<%= image_tag @event.image3 %>
 				<% end %>
 			</div>
 		</div>
@@ -75,6 +74,7 @@
 				<p><%= @event.address_2 %></p>
 			<% end %>
 			<p><%= @event.city %> <%= @event.state %>, <%= @event.zip_code %></p>
+			<p>at <%= @event.date.strftime("%l:%M %p") %></p>
 		</div>
 	</div>
 	<div class="eventComments">

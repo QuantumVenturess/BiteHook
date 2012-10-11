@@ -35,7 +35,7 @@ class SessionsController < ApplicationController
 			if @user
 				@user.update_attribute(:access_token, access_token)
 				sign_in @user
-				redirect_to upcoming_path
+				redirect_back_or upcoming_path
 			else
 				@user = User.new(name: name, 
 							     first_name: first_name, 
@@ -47,7 +47,7 @@ class SessionsController < ApplicationController
 							     access_token: access_token)
 				if @user.save
 					sign_in @user
-					redirect_to upcoming_path
+					redirect_back_or upcoming_path
 				else
 					flash[:error] = 'Unable to create user, please try again.'
 					redirect_to root_path
@@ -58,6 +58,7 @@ class SessionsController < ApplicationController
 
 	def destroy
 		sign_out
+		clear_return_to
 		redirect_to root_path
 	end
 end

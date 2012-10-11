@@ -1,3 +1,37 @@
+.topButton {
+	display: none;
+	position: fixed;
+	right: 0;
+	top: 0;
+	-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+	-khtml-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+	-ms-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+	-o-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.toTop {
+	background: rgb(207, 4, 4);
+	display: block;
+	height: 30px;
+	padding: 5px;
+	width: 30px;
+}
+
+.toTop:hover {
+	background: rgb(227, 24, 24);
+}
+
+.toTop div {
+	border-bottom: 15px solid rgb(245, 245, 245);
+	border-left: 15px solid transparent;
+	border-right: 15px solid transparent;
+	margin: 5px 0 0 0;
+	height: 0;
+	width: 0;
+}
+
 .eventShow {
 	background: rgb(255, 255, 255);
 	float: right;
@@ -147,17 +181,19 @@
 	width: 500px;
 }
 
-.eventImage .slides_container {
+.eventImageContainer {
 	height: 500px;
+	overflow: hidden;
+	position: absolute;
 	width: 500px;
+	z-index: 100;
 }
 
 .eventImage img {
+	left: 0;
 	max-height: 500px;
-}
-
-.eventImage .pagination {
-	display: none;
+	position: absolute;
+	z-index: 99;
 }
 
 /* Info */
