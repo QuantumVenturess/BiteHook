@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
 					me  = FbGraph::User.me(current_user.access_token)
 					action = me.og_action!(
 						'bitehook:comment',
-						"http://bitehook.com#{event_path(comment.event)}"
+						event: "http://bitehook.com#{event_path(comment.event)}"
 					)
 				end
 			end
