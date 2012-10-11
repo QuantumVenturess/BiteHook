@@ -1,6 +1,4 @@
 class PagesController < ApplicationController
-	before_filter :authenticate, only: :test
-	before_filter :admin_user, only: :test
 
 	def home
 		@title = "BiteHook"
@@ -22,6 +20,9 @@ class PagesController < ApplicationController
 		@title = @event.name
 		@attending = @event.users
 		@comments = @event.comments
+	end
+
+	def test2
 		app = FbGraph::Application.new("154291521379396")
 		me = FbGraph::User.me(current_user.access_token)
 		actions = me.og_actions 'bitehook:attend'
