@@ -12,11 +12,11 @@ class PaymentsController < ApplicationController
 		event_id = event ? event.id : nil
 		payment = Payment.new(user_id: current_user.id,
 							  event_id: event_id,
-							  transaction_amount: params[:transactionAmount],
+							  amount: params[:transactionAmount].split(' ')[1].to_f,
 							  transaction_id: params[:transactionId],
 							  description: params[:paymentReason])
 		if event
-			if payment.save
+			if payment.save!
 				if payment.amount == event.price
 					unless Attendance.find_by_user_id_and_event_id(current_user, event)
 						Attendance.create(user_id: current_user.id, event_id: event.id)
