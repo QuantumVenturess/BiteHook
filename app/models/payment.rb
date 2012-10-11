@@ -1,5 +1,9 @@
 class Payment < ActiveRecord::Base
-	attr_accessible :user_id, :event_id
+	attr_accessible :user_id, 
+					:event_id,
+					:amount,
+					:transaction_id,
+					:description
 
 	belongs_to :user
 	belongs_to :event

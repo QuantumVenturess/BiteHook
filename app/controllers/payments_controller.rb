@@ -11,10 +11,10 @@ class PaymentsController < ApplicationController
 		event = Event.find_by_id(params[:event_id])
 		event_id = event ? event.id : nil
 		payment = Payment.new(user_id: current_user.id,
-							   event_id: event_id,
-							   transaction_amount: params[:transactionAmount],
-							   transaction_id: params[:transactionId],
-							   description: params[:paymentReason])
+							  event_id: event_id,
+							  transaction_amount: params[:transactionAmount],
+							  transaction_id: params[:transactionId],
+							  description: params[:paymentReason])
 		if event
 			if payment.save
 				if payment.amount == event.price
