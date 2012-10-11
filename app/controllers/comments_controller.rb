@@ -18,19 +18,12 @@ class CommentsController < ApplicationController
 				api_call = HTTParty.get("https://graph.facebook.com/me/permissions?access_token=#{current_user.access_token}")
 				results = JSON.parse(api_call.to_json)
 				if results['data'][0]['publish_stream'] == 1
-					app = FbGraph::Application.new(app_id)
+					app = FbGraph::Application.new(154291521379396)
 					me  = FbGraph::User.me(current_user.access_token)
-					if Rails.env.production?
-						action = me.og_action!(
-							'bitehook:comment',
-							event: "http://bitehook.com/events/bitehook-launch-party"
-						)
-					else
-						action = me.og_action!(
-							'bitehook_offline:comment',
-							event: "http://bitehook.com/test"
-						)
-					end
+					action = me.og_action!(
+						'bitehook_offline:comment',
+						event: "http://bitehook.com/test"
+					)
 				end
 			end
 		else
