@@ -9,6 +9,15 @@
 	<meta property="og:url"    content="http://bitehook.com/test" />
 	<meta property="og:site_name" content="BiteHook" />
 </head>
+<% if Rails.env.production? %>
+<script>
+	location.href = "http://bitehook.com<%= event_path(@event) %>"
+</script>
+<% else %>
+<script>
+	location.href = "http://localhost:3000<%= event_path(@event) %>"
+</script>
+<% end %>
 <body>
 </body>
 </html>

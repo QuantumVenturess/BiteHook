@@ -25,7 +25,6 @@ class EventsController < ApplicationController
 
 	def permalink
 		@event = Event.find(params[:id])
-		redirect_to @event
 	end
 
 	def new
