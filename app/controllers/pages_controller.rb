@@ -17,5 +17,6 @@ class PagesController < ApplicationController
 	def test
 		@title = 'Test'
 		@event = Event.first
+		render layout: false
 	end
 end
