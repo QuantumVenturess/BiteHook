@@ -6,7 +6,7 @@
 	<meta property="og:title" content="<%= @event.name %>" />
 	<meta property="og:image" content="<%= @event.image1 %>" />
 	<meta property="og:description" content="<%= @event.info %>" />
-	<meta property="og:url"    content="http://bitehook.com<%= event_path(@event) %>" />
+	<meta property="og:url"    content="http://bitehook.com<%= event_path(@event) %>/permalink" />
 	<meta property="og:site_name" content="BiteHook" />
 </head>
 <% if Rails.env.production? %>
