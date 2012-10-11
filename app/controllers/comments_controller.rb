@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
 					if Rails.env.production?
 						action = me.og_action!(
 							'bitehook:comment',
-							event: "http://bitehook.com/test"
+							event: "http://bitehook.com/events/bitehook-launch-party"
 						)
 					end
 				end
