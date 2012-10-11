@@ -9,6 +9,7 @@ gem 'friendly_id'
 gem 'shortly'
 gem 'rails_autolink'
 gem 'dalli'
+gem 'koala'
 
 group :production do
 	gem 'pg'
