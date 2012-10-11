@@ -16,7 +16,7 @@ class PagesController < ApplicationController
 
 	def test
 		@user = current_user
-		@event = Event.where('date < ?', Time.now)[0]
+		@event = Event.first
 		@title = @event.name
 		@attending = @event.users
 		@comments = @event.comments
