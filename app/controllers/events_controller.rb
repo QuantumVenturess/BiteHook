@@ -25,6 +25,7 @@ class EventsController < ApplicationController
 
 	def permalink
 		@event = Event.find(params[:id])
+		render layout: false
 	end
 
 	def new
