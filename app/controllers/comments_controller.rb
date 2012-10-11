@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
 					me  = FbGraph::User.me(current_user.access_token)
 					if Rails.env.production?
 						action = me.og_action!(
-							'bitehook:comment',
+							'bitehook:comment_on',
 							event: "http://bitehook.com#{event_path(comment.event)}/permalink"
 						)
 					end
