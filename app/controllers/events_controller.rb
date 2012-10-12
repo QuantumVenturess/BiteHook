@@ -13,7 +13,7 @@ class EventsController < ApplicationController
 				if Rails.env.production?
 					action = me.og_action!(
 						'bitehook:attend',
-						event: "http://bitehook.com#{event_path(comment.event)}/permalink"
+						event: "http://bitehook.com#{event_path(event)}/permalink"
 					)
 				end
 			end
