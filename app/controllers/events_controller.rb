@@ -4,18 +4,16 @@ class EventsController < ApplicationController
 
 	def attend
 		event = Event.find(params[:id])
-		if params[:post_facebook] == '1'
-			api_call = HTTParty.get("https://graph.facebook.com/me/permissions?access_token=#{current_user.access_token}")
-			results = JSON.parse(api_call.to_json)
-			if results['data'][0]['publish_stream'] == 1
-				app = FbGraph::Application.new(app_id)
-				me  = FbGraph::User.me(current_user.access_token)
-				if Rails.env.production?
-					action = me.og_action!(
-						'bitehook:attend',
-						event: "http://bitehook.com#{event_path(event)}/permalink"
-					)
-				end
+		api_call = HTTParty.get("https://graph.facebook.com/me/permissions?access_token=#{current_user.access_token}")
+		results = JSON.parse(api_call.to_json)
+		if results['data'][0]['publish_stream'] == 1
+			app = FbGraph::Application.new(app_id)
+			me  = FbGraph::User.me(current_user.access_token)
+			if Rails.env.production?
+				action = me.og_action!(
+					'bitehook:attend',
+					event: "http://bitehook.com#{event_path(event)}/permalink"
+				)
 			end
 		end
 		flash[:success] = 'Thank you for attending, see you there!'
