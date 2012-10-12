@@ -20,14 +20,14 @@ class PaymentsController < ApplicationController
 					api_call = HTTParty.get("https://graph.facebook.com/me/permissions?access_token=#{current_user.access_token}")
 					results = JSON.parse(api_call.to_json)
 					if results['data'][0]['publish_stream'] == 1
-						me = FbGraph::User.me(current_user.access_token)
-						me.feed!(
-							message: "Going to the #{event.name}, see you there.",
-							picture: event.image1,
-							link: "http://bitehook.com#{event_path(event)}",
-							name: "BiteHook: #{event.name}",
-							description: event.info
-						)
+						app = FbGraph::Application.new(app_id)
+						me  = FbGraph::User.me(current_user.access_token)
+						if Rails.env.production?
+							action = me.og_action!(
+								'bitehook:attend',
+								event: "http://bitehook.com#{event_path(event)}/permalink"
+							)
+						end
 					end
 					flash[:success] = 'Payment received. See you at the event!'
 				else

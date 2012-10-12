@@ -43,7 +43,7 @@
 					<p id="alreadyAttending">Attended</p>
 				<% end %>
 			<% else %>
-				<%= link_to 'Attend', attend_event_path(event) %>
+				<%= render 'payments/form', object: event %>
 			<% end %>
 		</div>
 		<div class="clear"></div>
