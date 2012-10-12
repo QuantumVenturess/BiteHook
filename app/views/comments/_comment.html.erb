@@ -1,9 +1,9 @@
-<div id="comment_<%= comment.id %>" class="comment <%= 'myComment' if comment.user == current_user %>">
+<div id="comment_<%= comment.id %>" class="comment <%= 'myComment' if comment.user == current_user || signed_in? && current_user.admin? %>">
 	<div class="commentImage">
 		<%= link_to image_tag(comment.user.image), comment.user %>
 	</div>
 	<div class="commentName">
-		<% if comment.user == current_user %>
+		<% if comment.user == current_user || signed_in? && current_user.admin? %>
 			<%= link_to image_tag('/assets/delete.png'), comment, class: 'commentDelete', title: 'Delete', method: :delete, remote: true %>
 		<% end %>
 		<p><%= link_to comment.user.name, comment.user %></p>
