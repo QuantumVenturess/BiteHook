@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
-	before_filter :authenticate, except: [:show, :permalink]
-	before_filter :admin_user, except: [:upcoming, :show, :permalink]
+	before_filter :authenticate, except: [:attend, :show, :permalink]
+	before_filter :admin_user, except: [:attend, :upcoming, :show, :permalink]
 
 	def attend
 		event = Event.find(params[:id])
