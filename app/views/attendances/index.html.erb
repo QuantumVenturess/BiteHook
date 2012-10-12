@@ -1,0 +1,17 @@
+<div class="payments">
+	<ol>
+		<% @attendances.each do |attendance| %>
+			<li>
+				<div class="payment">
+					<p><%= attendance.created_at.strftime("%b %d, %y at %I:%M %P") %></p>
+					<p>
+						<%= link_to attendance.user.name, attendance.user %> 
+						is attending 
+						<%= link_to attendance.event.name, attendance.event %>
+					</p>
+					<p><%= link_to 'Edit', edit_attendance_path(attendance) %> | <%= link_to 'Delete', attendance, method: :delete, confirm: 'Are you sure you want to delete?' %></p>
+				</div>
+			</li>
+		<% end %>
+	</ol>
+</div>

@@ -5,13 +5,13 @@ class PagesController < ApplicationController
 		clear_return_to
 	end
 
-	def about
-		@title = "About BiteHook"
-	end
-
 	def not_found
 		@title = '404 Party'
 		redirect_to upcoming_path
+	end
+
+	def about
+		@title = "About BiteHook"
 	end
 
 	def test

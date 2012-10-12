@@ -1,3 +1,14 @@
-<% @users.each do |user| %>
-	<p><%= link_to user.name, user %></p>
-<% end %>
+<div class="payments">
+	<ol>
+		<% @users.each do |user| %>
+			<li>
+				<div class="payment">
+					<p>Joined: <%= user.created_at.strftime("%b %d, %y at %I:%M %P") %></p>
+					<p><%= link_to user.name, user %> - <%= user.email %></p>
+					<p>Location: <%= user.location %></p>
+					<p>Last Sign In: <%= user.last_in.strftime("%b %d, %y at %I:%M %P") %> | Count: <%= user.in_count %></p>
+				</div>
+			</li>
+		<% end %>
+	</ol>
+</div>

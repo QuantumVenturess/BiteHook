@@ -7,8 +7,10 @@
 			<div class="accountMenu">
 				<ul>
 					<% if current_user.admin? %>
-						<li><%= link_to 'New Event', new_event_path %></li>
 						<li><%= link_to 'Events', events_path %></li>
+						<li><%= link_to 'Users', users_path %></li>
+						<li><%= link_to 'Payments', payments_path %></li>
+						<li><%= link_to 'Attendances', attendances_path %></li>
 					<% end %>
 					<li><%= link_to 'My Bites', current_user %></li>
 					<li><%= link_to 'Settings', edit_user_path(current_user) %></li>
@@ -19,6 +21,9 @@
 	<% end %>
 	<div class="rightNav">
 		<ul class="headerNav">
+			<% if signed_in? && current_user.admin? %>
+				<li><%= link_to 'New Event', new_event_path %></li>
+			<% end %>
 			<li>
 				<% if signed_in? %>
 					<%= link_to 'Upcoming Events', upcoming_path %>

@@ -2,11 +2,7 @@ class PaymentsController < ApplicationController
 	before_filter :authenticate
 	before_filter :admin_user, only: :index
 
-	def index
-		@title = 'All Payments'
-		@payments = Payment.order('created_at DESC')
-	end
-
+	# signed in users
 	def confirm_payment
 		event = Event.find_by_id(params[:event_id])
 		event_id = event ? event.id : nil
@@ -49,5 +45,11 @@ class PaymentsController < ApplicationController
 			end
 			redirect_to upcoming_path
 		end
+	end
+
+	# admin users
+	def index
+		@title = 'All Payments'
+		@payments = Payment.order('created_at DESC')
 	end
 end

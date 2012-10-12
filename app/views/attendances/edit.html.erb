@@ -1,0 +1,19 @@
+<div class="eventForm attendanceForm">
+	<p class="formHeader"><%= @title %></p>
+	<%= form_for @attendance do |f| %>
+		<div class="form">
+			<div class="field">
+				<p>User</p>
+				<%= text_field_tag :user_name, "#{@user.name}", data: { autocomplete_source: user_list_path } %>
+			</div>
+			<div class="field">
+				<p>Event</p>
+				<%= text_field_tag :event_name, "#{@event.name}", data: { autocomplete_source: event_list_path } %>
+			</div>
+			<div class="action">
+				<%= f.submit 'Submit' %>
+				<%= link_to 'Cancel', attendances_path %>
+			</div>
+		</div>
+	<% end %>
+</div>
