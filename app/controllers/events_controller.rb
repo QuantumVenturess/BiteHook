@@ -12,7 +12,7 @@ class EventsController < ApplicationController
 			me  = FbGraph::User.me(current_user.access_token)
 			if Rails.env.production?
 				action = me.og_action!(
-					'bitehook:attend',
+					'bitehook:attend_the',
 					event: "http://bitehook.com#{event_path(event)}/permalink"
 				)
 			end
