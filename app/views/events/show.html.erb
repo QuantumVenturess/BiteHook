@@ -28,7 +28,7 @@
 							<p id="alreadyAttending">Attended</p>
 						<% end %>
 					<% else %>
-						<%= render partial: 'payments/form', locals: { object: @event } %>
+						<%= link_to 'Attend', attend_event_path(@event) %>
 					<% end %>
 				<% else %>
 					<%= link_to 'Attend', facebook_url %>

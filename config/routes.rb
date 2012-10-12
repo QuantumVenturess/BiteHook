@@ -3,6 +3,7 @@ Bitehook::Application.routes.draw do
 	resources :comments, only: [:create, :destroy]
 	resources :events do
 		member do
+			get :attend
 			get :permalink
 		end
 	end
