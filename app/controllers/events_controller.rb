@@ -90,7 +90,7 @@ class EventsController < ApplicationController
 
 	def event_list
 		if Rails.env.production?
-			@events = Event.order(:name).where("name ILIKE ? OR price ILIKE ? OR date ILIKE ? OR info ILIKE ? OR address_1 ILIKE ? OR address_2 ILIKE ? OR city ILIKE ? OR state ILIKE ? OR zip_code ILIKE ?", "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%")
+			@events = Event.order(:name).where("name ILIKE ? OR info ILIKE ?", "%#{params[:term]}%", "%#{params[:term]}%")
 		else
 			@events = Event.order(:name).where("name LIKE ? OR price LIKE ? OR date LIKE ? OR info LIKE ? OR address_1 LIKE ? OR address_2 LIKE ? OR city LIKE ? OR state LIKE ? OR zip_code LIKE ?", "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%")
 		end
