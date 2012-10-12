@@ -41,7 +41,9 @@
 					<p>People Attending</p>
 				<% end %>
 				<% @attending.each do |user| %>
-					<%= link_to image_tag(user.image), user, title: user.first_name %>
+					<div>
+						<%= link_to image_tag(user.image), user, title: user.first_name %>
+					</div>
 				<% end %>
 			</div>
 		</div>
@@ -93,3 +95,12 @@
 	</div>
 </div>
 <div class="clear"></div>
+<% if signed_in? %>
+	<% if current_user.admin? %>
+	<script>
+		$('document').ready(function() {
+			$('.headerNav').prepend("<li><a href='<%= event_path(@event) %>/edit' >Edit</a></li>");
+		});
+	</script>
+	<% end %>
+<% end %>

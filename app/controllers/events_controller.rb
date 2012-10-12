@@ -16,7 +16,7 @@ class EventsController < ApplicationController
 	def show
 		@event = Event.find(params[:id])
 		@title = @event.name
-		@attending = @event.users
+		@attending = @event.users.shuffle
 		@comments = @event.comments
 		store_location
 	rescue ActiveRecord::RecordNotFound
