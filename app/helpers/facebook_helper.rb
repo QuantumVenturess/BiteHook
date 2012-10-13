@@ -4,7 +4,7 @@ module FacebookHelper
 		[
 			'user_location',
 			'email',
-			'publish_stream'
+			'publish_actions'
 		].join(',')
 	end
 
