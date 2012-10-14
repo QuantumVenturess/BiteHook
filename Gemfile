@@ -9,6 +9,7 @@ gem 'friendly_id'
 gem 'shortly'
 gem 'rails_autolink'
 gem 'dalli'
+gem 'delayed_job_active_record'
 
 group :production do
 	gem 'pg'

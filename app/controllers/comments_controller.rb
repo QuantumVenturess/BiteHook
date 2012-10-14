@@ -14,18 +14,7 @@ class CommentsController < ApplicationController
 					@event = comment.event
 				}
 			end
-			api_call = HTTParty.get("https://graph.facebook.com/me/permissions?access_token=#{current_user.access_token}")
-			results = JSON.parse(api_call.to_json)
-			if results['data'][0]['publish_actions'] == 1
-				app = FbGraph::Application.new(app_id)
-				me  = FbGraph::User.me(current_user.access_token)
-				if Rails.env.production?
-					action = me.og_action!(
-						'bitehook:comment_on',
-						event: "http://bitehook.com#{event_path(comment.event)}/permalink"
-					)
-				end
-			end
+			fb_action('comment_on', comment.event).delay if Rails.env.production?
 		else
 			flash[:error] = 'Comment was not created'
 			redirect_to :back
