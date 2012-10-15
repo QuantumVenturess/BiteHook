@@ -35,7 +35,6 @@ class SessionsController < ApplicationController
 			if @user
 				@user.update_attribute(:access_token, access_token)
 				sign_in @user
-				expire_page root_path
 				redirect_back_or upcoming_path
 			else
 				@user = User.new(name: name, 
@@ -48,7 +47,6 @@ class SessionsController < ApplicationController
 							     access_token: access_token)
 				if @user.save
 					sign_in @user
-					expire_page root_path
 					redirect_back_or upcoming_path
 				else
 					flash[:error] = 'Unable to create user, please try again.'
@@ -60,7 +58,6 @@ class SessionsController < ApplicationController
 
 	def destroy
 		sign_out
-		expire_page root_path
 		clear_return_to
 		redirect_to root_path
 	end
