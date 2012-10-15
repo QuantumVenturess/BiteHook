@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
 					@event = comment.event
 				}
 			end
-			fb_action('comment_on', comment.event).delay if Rails.env.production?
+			fb_action('comment_on', comment.event).delay(queue: 'comment_on', priority: 10) if Rails.env.production?
 		else
 			flash[:error] = 'Comment was not created'
 			redirect_to :back

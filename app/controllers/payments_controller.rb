@@ -17,7 +17,7 @@ class PaymentsController < ApplicationController
 					unless Attendance.find_by_user_id_and_event_id(current_user, event)
 						Attendance.create(user_id: current_user.id, event_id: event.id)
 					end
-					fb_action('attend', event).delay if Rails.env.production?
+					fb_action('attend', event).delay(queue: 'attend', priority: 9) if Rails.env.production?
 					flash[:success] = 'Payment received. See you at the event!'
 				else
 					flash[:notice] = 'You may have paid too much or too little. Please contact us regarding this issue.'
