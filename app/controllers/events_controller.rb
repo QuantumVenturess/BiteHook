@@ -30,7 +30,7 @@ class EventsController < ApplicationController
 		unless Attendance.find_by_user_id_and_event_id(current_user, event)
 			Attendance.create(user_id: current_user.id, event_id: event.id)
 		end
-		fb_action('attend', event).delay(queue: 'attend', priority: 9) if Rails.env.production?
+		fb_action('attend', event).delay(queue: 'attend', priority: 9, run_at: 10.seconds.from_now) if Rails.env.production?
 		respond_to do |format|
 			format.html {
 				flash[:success] = 'Thank you for attending, see you there!'
