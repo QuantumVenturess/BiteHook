@@ -1,26 +1,8 @@
 class EventsController < ApplicationController
-	before_filter :authenticate, except: [:attend, :show, :permalink]
+	before_filter :authenticate, except: [:show, :permalink]
 	before_filter :admin_user, except: [:attend, :show, :permalink, :upcoming]
 
 	# all users
-	def attend
-		event = Event.find(params[:id])
-		api_call = HTTParty.get("https://graph.facebook.com/me/permissions?access_token=#{current_user.access_token}")
-		results = JSON.parse(api_call.to_json)
-		if results['data'][0]['publish_stream'] == 1
-			app = FbGraph::Application.new(app_id)
-			me  = FbGraph::User.me(current_user.access_token)
-			if Rails.env.production?
-				action = me.og_action!(
-					'bitehook:attend',
-					event: "http://bitehook.com#{event_path(event)}/permalink"
-				)
-			end
-		end
-		flash[:success] = 'Thank you for attending, see you there!'
-		redirect_to event
-	end
-
 	def show
 		@event = Event.find(params[:id])
 		@title = @event.name
@@ -41,6 +23,25 @@ class EventsController < ApplicationController
 		@title = 'Upcoming Events'
 		@events = Event.where('date >= ?', Time.now).order('date ASC')
 		render 'index'
+	end
+
+	def attend
+		event = Event.find(params[:id])
+		unless Attendance.find_by_user_id_and_event_id(current_user, event)
+			Attendance.create(user_id: current_user.id, event_id: event.id)
+		end
+		fb_action('attend', event).delay(queue: 'attend', priority: 9) if Rails.env.production?
+		respond_to do |format|
+			format.html {
+				flash[:success] = 'Thank you for attending, see you there!'
+				redirect_to event
+			}
+			format.js {
+				@event = event
+			}
+		end
+	rescue ActiveRecord::RecordNotFound
+		redirect_to upcoming_path
 	end
 
 	# admin users

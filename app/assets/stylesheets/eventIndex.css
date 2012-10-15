@@ -40,16 +40,23 @@
 	top: 15px;
 }
 
-.eventSingleAttend a {
+.eventSingleAttend a, .eventHeader .attend a {
 	background: rgb(207, 4, 4);
 	color: rgb(245, 245, 245);
+	display: block;
 	font-size: 20px;
+	height: 24px;
 	padding: 10px 20px;
+	width: 57px;
 }
 
-.eventSingleAttend a:hover {
+.eventSingleAttend a:hover, .eventHeader .attend a:hover {
 	color: rgb(245, 245, 245);
 	background: rgb(227, 24, 24);
+}
+
+.eventSingleAttend a:active, .eventHeader .attend a:active {
+	background: rgb(217, 14, 14);
 }
 
 /* Share */

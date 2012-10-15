@@ -1,0 +1,2 @@
+$('.attend').html("<%= escape_javascript(render(partial: 'events/attend', locals: { event: @event })) %>");
+$('#eventSingleAttend_' + <%= @event.id %>).html("<%= escape_javascript(render(partial: 'events/attend', locals: { event: @event })) %>");

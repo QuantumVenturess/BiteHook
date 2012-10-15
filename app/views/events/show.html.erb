@@ -18,19 +18,7 @@
 			<p id="eventDate"><%= @event.date.strftime("%b %d, %Y") %></p>
 			<div class="clear"></div>
 			<div class="attend">
-				<% if signed_in? %>
-					<% if current_user.attending?(@event) %>
-						<% if @event.date > Time.now %>
-							<p id="alreadyAttending">Attending</p>
-						<% else %>
-							<p id="alreadyAttending">Attended</p>
-						<% end %>
-					<% else %>
-						<%= render 'payments/form', object: @event %>
-					<% end %>
-				<% else %>
-					<%= link_to 'Attend', facebook_url %>
-				<% end %>
+				<%= render partial: 'attend', locals: { event: @event } %>
 			</div>
 			<% if signed_in? && current_user.admin? %>
 				<div class="attending">

@@ -112,22 +112,6 @@
 	margin: 20px 0 0 0;
 }
 
-.attend a {
-	background: rgb(207, 4, 4);
-	color: rgb(245, 245, 245);
-	font-size: 20px;
-	padding: 10px 20px;
-}
-
-.attend a:hover {
-	background: rgb(227, 24, 24);
-	color: rgb(245, 245, 245);
-}
-
-.attend a:active {
-	background: rgb(217, 14, 14);
-}
-
 .paymentSubmit {
 	background: rgb(207, 4, 4);
 	border: none;
@@ -152,6 +136,8 @@
 	background: rgb(227, 24, 24);
 	color: rgb(245, 245, 245);
 	font-size: 20px;
+	height: 24px;
+	line-height: 24px;
 	padding: 10px 20px;
 }
 

@@ -1,0 +1,13 @@
+<% if signed_in? %>
+	<% if current_user.attending?(event) %>
+		<% if event.date > Time.now %>
+			<p id="alreadyAttending">Attending</p>
+		<% else %>
+			<p id="alreadyAttending">Attended</p>
+		<% end %>
+	<% else %>
+		<%= link_to 'Attend', attend_event_path(event), remote: true %>
+	<% end %>
+<% else %>
+	<%= link_to 'Attend', facebook_url %>
+<% end %>
