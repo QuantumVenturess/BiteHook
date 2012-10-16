@@ -49,17 +49,4 @@ module FacebookHelper
 	def get_me(user)
 		FbGraph::User.me(user.access_token)
 	end
-
-	def fb_action(action, event)
-		api_call = HTTParty.get("https://graph.facebook.com/me/permissions?access_token=#{current_user.access_token}")
-		results = JSON.parse(api_call.to_json)
-		if results['data'][0]['publish_actions'] == 1
-			app = FbGraph::Application.new(app_id)
-			me  = FbGraph::User.me(current_user.access_token)
-			action = me.og_action!(
-				"bitehook:#{action}",
-				event: "http://bitehook.com#{event_path(event)}/permalink"
-			)
-		end
-	end
 end

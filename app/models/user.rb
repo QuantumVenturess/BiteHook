@@ -39,4 +39,18 @@ class User < ActiveRecord::Base
 	def attending?(event)
 		Attendance.find_by_user_id_and_event_id(self, event) ? true : false
 	end
+
+	def fb_action(action, event)
+		access_token = self.access_token
+		api_call = HTTParty.get("https://graph.facebook.com/me/permissions?access_token=#{access_token}")
+		results = JSON.parse(api_call.to_json)
+		if results['data'][0]['publish_actions'] == 1
+			app = FbGraph::Application.new(app_id)
+			me  = FbGraph::User.me(access_token)
+			action = me.og_action!(
+				"bitehook:#{action}",
+				event: "http://bitehook.com#{event_path(event)}/permalink"
+			)
+		end
+	end
 end
