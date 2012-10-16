@@ -41,6 +41,7 @@ class User < ActiveRecord::Base
 	end
 
 	def fb_action(action, event)
+		app_id = "160257407449032"
 		access_token = self.access_token
 		api_call = HTTParty.get("https://graph.facebook.com/me/permissions?access_token=#{access_token}")
 		results = JSON.parse(api_call.to_json)
